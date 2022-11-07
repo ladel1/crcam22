@@ -11,8 +11,22 @@ class MainController extends AbstractController{
     /**
      * @Route("/")
      */
-    public function index():Response{        
-        return $this->render("main/index.html.twig");
+    public function index():Response{  
+        
+        $clients = [
+            [
+                "firstname"=>"Florian",
+                "lastname"=>"Boivin",
+                "city"=>"Paris"
+            ],
+            [
+                "firstname"=>"Boris",
+                "lastname"=>"Vatin",
+                "city"=>"Brest"
+            ],
+        ];
+        $name="Adel";
+        return $this->render("main/index.html.twig",compact("clients","name"));
     }
 
 }
