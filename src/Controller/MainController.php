@@ -8,8 +8,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController{
 
+    
     /**
-     * @Route("/")
+     * @Route("/blog/{page}", name="app_blog",requirements={"page":"\d+"})
+     */
+    public function blog($page=0):Response{  
+        return new Response("blog ".$page);
+    }
+      
+    
+    /**
+     * @Route("/", name="app_home")
      */
     public function index():Response{  
         

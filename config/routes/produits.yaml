@@ -1,0 +1,11 @@
+list:
+  path: /list
+  controller: App\Controller\ProduitController::list
+
+add:
+  path: /add
+  controller: App\Controller\ProduitController::add
+
+detail:
+  path: /detail/{id}
+  controller: App\Controller\ProduitController::detail  

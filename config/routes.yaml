@@ -1,3 +1,10 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+controllers:
+  resource: routes/produits.yaml
+  name_prefix: app_produit_
+  prefix: /produit
+
+
+  

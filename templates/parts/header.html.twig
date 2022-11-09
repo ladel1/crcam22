@@ -9,7 +9,7 @@
             <ul class="navbar-nav">
                 {% for item in menu %}                        
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/{{ item|lower|trim|replace({" ":"-"}) }}">{{ item|upper }}</a>
+                        <a class="nav-link" aria-current="page" href="{{ url(item.name) }}">{{ item.label|upper }}</a>
                     </li>
                 {% endfor %}
             </ul>
