@@ -12,6 +12,21 @@
                         <a class="nav-link" aria-current="page" href="{{ url(item.name) }}">{{ item.label|upper }}</a>
                     </li>
                 {% endfor %}
+                {% if is_granted("ROLE_VENDOR") %}
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            Admin
+                        </a>
+                    </li>                
+                {% endif %}
+                
+                {% if app.user %}                
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            {{ app.user.email }}
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
         </div>

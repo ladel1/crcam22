@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\AdditionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,7 +21,9 @@ class MainController extends AbstractController{
     /**
      * @Route("/", name="app_home")
      */
-    public function index():Response{  
+    public function index(AdditionService $addService):Response{
+        
+        dd($addService->add(4,3));
         
         $clients = [
             [

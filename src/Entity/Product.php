@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -16,8 +17,17 @@ class Product
      * @ORM\Column(type="integer")
      */
     private $id;
-
+    
     /**
+     * @Assert\NotBlank(
+     *  message="Le champs nom ne peut pas etre vide!"
+     * )
+     * @Assert\Length(
+     *  min=3,
+     *  max=255,
+     *  minMessage="Trop court min {{ limit }} pour {{ value }} !",
+     *  maxMessage="Trop long!"
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $name;
@@ -42,8 +52,15 @@ class Product
      */
     private $isNew;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
     public function getId(): ?int
     {
+        
         return $this->id;
     }
 
@@ -103,6 +120,18 @@ class Product
     public function setIsNew(bool $isNew): self
     {
         $this->isNew = $isNew;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

@@ -6,14 +6,19 @@
 <div class="row text-center mt-5">
     <h1>Ajouter un produit</h1>
 </div>
-<div class="row mt-5">
+<div class="row mt-5 mb-5">
     <div class="col-6 offset-3">
         {{ form_start(formProduct) }}  
         
             {{ form_row(formProduct.name,{
                 'label':"Nom", 
+                "attr":{
+                    "maxlength":"",
+                    "pattern":"{,}"
+                }
             }) }}
             {{ form_row(formProduct.description) }}
+            {{ form_row(formProduct.category) }}
             {{ form_row(formProduct.dateCreated) }}
             {{ form_row(formProduct.price) }}
             {{ form_row(formProduct.isNew) }}
